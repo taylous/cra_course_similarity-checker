@@ -4,6 +4,8 @@ import java.lang.reflect.Constructor;
 
 public class LetterCount {
 
+    public static final double MAX_SCORE = 60.0;
+
     private final String compareToStr1;
     private final String compareToStr2;
 
@@ -26,7 +28,7 @@ public class LetterCount {
 
     public double processCompare() {
         if(this.compareToStr1.length() == this.compareToStr2.length()) {
-            return 60.0;
+            return MAX_SCORE;
         }
         return 0;
     }

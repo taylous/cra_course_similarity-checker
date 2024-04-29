@@ -1,5 +1,5 @@
 import cores.LetterCount;
-import org.junit.jupiter.api.BeforeEach;
+
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -34,7 +34,7 @@ class LetterCountTest {
         createConstructorWithCompareStrings("abc", "def");
 
         double actual = this.letterCount.processCompare();
-        double expected = 60.0;
+        double expected = LetterCount.MAX_SCORE;
 
         assertEquals(expected, actual);
     }
