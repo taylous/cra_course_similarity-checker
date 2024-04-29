@@ -43,6 +43,11 @@ public class LetterCount {
         return compareResult;
     }
 
+    private double calculatePartialScore(CompareResult compareResult) {
+        return (1 - ((double) (compareResult.A - compareResult.B) / compareResult.B))
+                * MAX_SCORE;
+    }
+
     public double processCompare() {
         if(this.compareToStr1.length() == this.compareToStr2.length()) {
             return MAX_SCORE;
@@ -57,8 +62,7 @@ public class LetterCount {
             else {
                 CompareResult compareResult = arrangeStrLength(str1Length, str2Length);
 
-                return (1 - ((double) (compareResult.A - compareResult.B) / compareResult.B))
-                        * MAX_SCORE;
+                return calculatePartialScore(compareResult);
             }
         }
     }
