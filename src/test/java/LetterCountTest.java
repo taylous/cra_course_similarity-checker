@@ -8,8 +8,9 @@ class LetterCountTest {
 
     private LetterCount letterCount;
     
-    private void createConstructorWithCompareStrings(String str1, String str2) {
+    private double createConstructorWithCompareStrings(String str1, String str2) {
         this.letterCount = new LetterCount(str1, str2);
+        return this.letterCount.processCompare();
     }
 
     @Test
@@ -31,9 +32,7 @@ class LetterCountTest {
 
     @Test
     void 같은_글자수_로직() {
-        createConstructorWithCompareStrings("abc", "def");
-
-        double actual = this.letterCount.processCompare();
+        double actual = createConstructorWithCompareStrings("abc", "def");
         double expected = LetterCount.MAX_SCORE;
 
         assertEquals(expected, actual);
@@ -41,21 +40,22 @@ class LetterCountTest {
 
     @Test
     void 길이가_2배이상_차이난다면() {
-        createConstructorWithCompareStrings("a", "aaa");
-
-        double actual = this.letterCount.processCompare();
+        double actual = createConstructorWithCompareStrings("a", "aaa");
+        double actual2 = createConstructorWithCompareStrings("a", "aa");
         double expected = LetterCount.MIN_SCORE;
 
         assertEquals(expected, actual);
+        assertEquals(expected, actual2);
     }
 
     @Test
     void 부분점수_로직() {
-        createConstructorWithCompareStrings("apple", "banana");
-
-        double actual = this.letterCount.processCompare();
+        double actual = createConstructorWithCompareStrings("apple", "banana");
+        double actual2 = createConstructorWithCompareStrings("banana2", "apple");
         double expected = 48.0;
+        double expected2 = 36.0;
 
         assertEquals(expected, actual);
+        assertEquals(expected2, actual2);
     }
 }

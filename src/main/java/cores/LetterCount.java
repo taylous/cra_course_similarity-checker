@@ -23,10 +23,6 @@ public class LetterCount {
         this.compareToStr2 = compareToStr2;
     }
 
-    public LetterCount() {
-        this("", "");
-    }
-
     public String getStringToCompare1() {
         return this.compareToStr1;
     }
