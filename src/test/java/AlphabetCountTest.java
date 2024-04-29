@@ -34,4 +34,12 @@ class AlphabetCountTest {
 
         assertThat(actual).isEqualTo(expected);
     }
+
+    @Test
+    void 부분점수() {
+        double actual = this.alphabetCount.checkUsedAlphabet("AAABB", "BAACD");
+        double expected = 20.0;
+
+        assertThat(actual).isEqualTo(expected);
+    }
 }
