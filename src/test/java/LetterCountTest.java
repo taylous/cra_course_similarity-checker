@@ -30,7 +30,7 @@ class LetterCountTest {
     }
 
     @Test
-    void 비교할_문자열들이_같은_길이라면() {
+    void 같은_글자수_로직() {
         createConstructorWithCompareStrings("abc", "def");
 
         double actual = this.letterCount.processCompare();
@@ -40,12 +40,16 @@ class LetterCountTest {
     }
 
     @Test
-    void 비교할_문자열들의_길이가_2배이상_차이난다면() {
+    void 길이가_2배이상_차이난다면() {
         createConstructorWithCompareStrings("a", "aaa");
 
         double actual = this.letterCount.processCompare();
         double expected = LetterCount.MIN_SCORE;
 
         assertEquals(expected, actual);
+    }
+
+    @Test
+    void 부분점수_로직() {
     }
 }
