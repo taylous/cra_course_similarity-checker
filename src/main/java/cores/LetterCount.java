@@ -38,7 +38,24 @@ public class LetterCount {
             if(str1Length * 2 <= str2Length || str2Length * 2 <= str1Length) {
                 return MIN_SCORE;
             }
-            return MIN_SCORE;
+            else {
+                double partialScore;
+                int A = 0;
+                int B = 0;
+
+                if(str1Length < str2Length) {
+                    A = str2Length;
+                    B = str1Length;
+                }
+                else {
+                    A = str1Length;
+                    B = str2Length;
+                }
+
+                partialScore = (1 - ((double) (A - B) / B)) * MAX_SCORE;
+
+                return partialScore;
+            }
         }
     }
 }

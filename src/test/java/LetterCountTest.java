@@ -51,5 +51,11 @@ class LetterCountTest {
 
     @Test
     void 부분점수_로직() {
+        createConstructorWithCompareStrings("apple", "banana");
+
+        double actual = this.letterCount.processCompare();
+        double expected = 48.0;
+
+        assertEquals(expected, actual);
     }
 }
