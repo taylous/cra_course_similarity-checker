@@ -2,6 +2,7 @@ package cores;
 
 public class AlphabetCount {
 
+    public static final double MAX_SCORE = 40.0;
     public static final int ALPHABET_COUNT = 26;
 
     public AlphabetCount() {
@@ -18,34 +19,26 @@ public class AlphabetCount {
         return bits;
     }
 
-    private int checkIntersectionAlphabets(int str1Bits, int str2Bits) {
-        int intersectionCount = 0;
+    private int checkAlphabetBits(int str1Bits, int str2Bits, boolean isIntersection) {
+        int count = 0;
         int str1Bit, str2Bit;
 
         for (int i = 0; i < ALPHABET_COUNT; i += 1) {
             str1Bit = str1Bits & (1 << i);
             str2Bit = str2Bits & (1 << i);
 
-            if (0 < str1Bit && 0 < str2Bit) {
-                intersectionCount += 1;
+            if (isIntersection) {
+                if (0 < str1Bit && 0 < str2Bit) {
+                    count += 1;
+                }
+            } else {
+                if (0 < str1Bit || 0 < str2Bit) {
+                    count += 1;
+                }
             }
+
         }
-        return intersectionCount;
-    }
-
-    private int checkUnionAlphabets(int str1Bits, int str2Bits) {
-        int unionCount = 0;
-        int str1Bit, str2Bit;
-
-        for (int i = 0; i < ALPHABET_COUNT; i += 1) {
-            str1Bit = str1Bits & (1 << i);
-            str2Bit = str2Bits & (1 << i);
-
-            if (0 < str1Bit || 0 < str2Bit) {
-                unionCount += 1;
-            }
-        }
-        return unionCount;
+        return count;
     }
 
     public double checkUsedAlphabet(String compareToStr1, String compareToStr2) {
@@ -55,13 +48,14 @@ public class AlphabetCount {
         if (str1Bits == str2Bits) {
             return 40.0;
         } else {
-            int intersectionCount = checkIntersectionAlphabets(str1Bits, str2Bits);
+            int intersectionCount = checkAlphabetBits(str1Bits, str2Bits, true);
+
             if (intersectionCount == 0) {
                 return 0.0;
             }
-            int unionCount = checkUnionAlphabets(str1Bits, str2Bits);
+            int unionCount = checkAlphabetBits(str1Bits, str2Bits, false);
 
-            return ((double) intersectionCount / unionCount) * 40;
+            return (((double) intersectionCount / unionCount)) * MAX_SCORE;
         }
     }
 }

@@ -22,14 +22,14 @@ class AlphabetCountTest {
     @Test
     void 같은_종류의_알파벳만_사용() {
         double actual = this.alphabetCount.checkUsedAlphabet("ASD", "DSA");
-        double expected = 40.0;
+        double expected = AlphabetCount.MAX_SCORE;
 
         assertThat(actual).isEqualTo(expected);
     }
 
     @Test
     void 다른_종류의_알파벳만_사용() {
-        double actual = this.alphabetCount.checkUsedAlphabet("A", "ABB");
+        double actual = this.alphabetCount.checkUsedAlphabet("A", "BB");
         double expected = 0.0;
 
         assertThat(actual).isEqualTo(expected);
