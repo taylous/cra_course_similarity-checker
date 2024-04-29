@@ -1,8 +1,16 @@
 package cores;
 
-import java.lang.reflect.Constructor;
-
 public class LetterCount {
+
+    private static class CompareResult {
+        public int A;
+        public int B;
+
+        public CompareResult(int a, int b) {
+            A = a;
+            B = b;
+        }
+    }
 
     public static final double MAX_SCORE = 60.0;
     public static final double MIN_SCORE = 0.0;
@@ -27,6 +35,18 @@ public class LetterCount {
         return this.compareToStr2;
     }
 
+    private CompareResult arrangeStrLength(int lengthA, int lengthB) {
+        CompareResult compareResult;
+
+        if(lengthA < lengthB) {
+            compareResult = new CompareResult(lengthB, lengthA);
+        }
+        else {
+            compareResult = new CompareResult(lengthA, lengthB);
+        }
+        return compareResult;
+    }
+
     public double processCompare() {
         if(this.compareToStr1.length() == this.compareToStr2.length()) {
             return MAX_SCORE;
@@ -39,22 +59,10 @@ public class LetterCount {
                 return MIN_SCORE;
             }
             else {
-                double partialScore;
-                int A = 0;
-                int B = 0;
+                CompareResult compareResult = arrangeStrLength(str1Length, str2Length);
 
-                if(str1Length < str2Length) {
-                    A = str2Length;
-                    B = str1Length;
-                }
-                else {
-                    A = str1Length;
-                    B = str2Length;
-                }
-
-                partialScore = (1 - ((double) (A - B) / B)) * MAX_SCORE;
-
-                return partialScore;
+                return (1 - ((double) (compareResult.A - compareResult.B) / compareResult.B))
+                        * MAX_SCORE;
             }
         }
     }
