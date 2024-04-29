@@ -26,4 +26,12 @@ class AlphabetCountTest {
 
         assertThat(actual).isEqualTo(expected);
     }
+
+    @Test
+    void 다른_종류의_알파벳만_사용() {
+        double actual = this.alphabetCount.checkUsedAlphabet("A", "ABB");
+        double expected = 0.0;
+
+        assertThat(actual).isEqualTo(expected);
+    }
 }
