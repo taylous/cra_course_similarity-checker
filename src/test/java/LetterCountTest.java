@@ -28,4 +28,14 @@ class LetterCountTest {
         assertEquals(expected1, letterCount.getStringToCompare1());
         assertEquals(expected2, letterCount.getStringToCompare2());
     }
+
+    @Test
+    void 비교할_문자열들이_같은_길이라면() {
+        createConstructorWithCompareStrings("abc", "def");
+
+        double actual = this.letterCount.processCompare();
+        double expected = 60.0;
+
+        assertEquals(expected, actual);
+    }
 }

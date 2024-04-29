@@ -23,4 +23,11 @@ public class LetterCount {
     public String getStringToCompare2() {
         return this.compareToStr2;
     }
+
+    public double processCompare() {
+        if(this.compareToStr1.length() == this.compareToStr2.length()) {
+            return 60.0;
+        }
+        return 0;
+    }
 }
