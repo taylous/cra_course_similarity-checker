@@ -38,4 +38,14 @@ class LetterCountTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    void 비교할_문자열들의_길이가_2배이상_차이난다면() {
+        createConstructorWithCompareStrings("a", "aaa");
+
+        double actual = this.letterCount.processCompare();
+        double expected = LetterCount.MIN_SCORE;
+
+        assertEquals(expected, actual);
+    }
 }
