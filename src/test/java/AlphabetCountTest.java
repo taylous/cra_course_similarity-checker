@@ -30,4 +30,14 @@ class AlphabetCountTest {
         assertThat(alphabetCount.getCompareToStr1()).isEqualTo("ASD");
         assertThat(alphabetCount.getCompareToStr2()).isEqualTo("DSA");
     }
+
+    @Test
+    void 같은_종류의_알파벳만_사용() {
+        createInstance("ASD", "DSA");
+
+        double actual = this.alphabetCount.checkUsedAlphabet();
+        double expected = 40.0;
+
+        assertThat(actual).isEqualTo(expected);
+    }
 }
